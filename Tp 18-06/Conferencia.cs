@@ -12,7 +12,10 @@ namespace Tp_18_06
         
         public override void ObtenerDescripcion()
         {
-            Console.WriteLine("Conferencia de eventos");
+            Console.WriteLine("Nombre: " + Nombre);
+            Console.WriteLine("Ubicacion: " + Ubicacion);
+            Console.WriteLine("Fecha: " + Fecha);
+            Console.WriteLine("Tema Principal: " + TemaPrincipal);
         }
     }
 }

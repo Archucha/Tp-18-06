@@ -11,8 +11,10 @@ namespace Tp_18_06
         public int CapacidadMax { get; set;}
         public override void ObtenerDescripcion()
         {
-            Console.WriteLine("Taller de informatica");
-            Console.WriteLine("Cantidad maxima de participantes: "+ CapacidadMax);
+            Console.WriteLine("Nombre: " + Nombre);
+            Console.WriteLine("Ubicacion: " + Ubicacion);
+            Console.WriteLine("Fecha: " + Fecha);
+            Console.WriteLine("Capacidad Maxima: " + CapacidadMax);
         }
         public override void AgregarParticipante(Participante par)
         {
