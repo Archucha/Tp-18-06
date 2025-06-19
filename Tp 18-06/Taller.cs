@@ -16,8 +16,9 @@ namespace Tp_18_06
             Console.WriteLine("Fecha: " + Fecha);
             Console.WriteLine("Capacidad Maxima: " + CapacidadMax);
         }
-        public override void AgregarParticipante(Participante par)
+        public override void AgregarParticipante()
         {
+            Participante par = new Participante();
             if (CantParticipantes + 1 > CapacidadMax)
             {
                 Console.WriteLine("Cantidad maxima alcanzada");

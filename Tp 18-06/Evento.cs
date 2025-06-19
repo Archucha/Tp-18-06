@@ -15,8 +15,9 @@ namespace Tp_18_06
         public int CantParticipantes {  get; set; }
         public List<Participante> Participantes { get; set; } = new List<Participante>();
         public abstract void ObtenerDescripcion();
-        public virtual void AgregarParticipante(Participante par)
+        public virtual void AgregarParticipante()
         {
+            Participante par = new Participante();
             Participantes.Add(par);
             CantParticipantes = CantParticipantes + 1; 
         }

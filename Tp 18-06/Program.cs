@@ -3,9 +3,18 @@ using Tp_18_06;
 
 internal class Program
 {
-    public List<Evento> eventos = new List<Evento>();
-    public Participante p = new Participante();
-    public void CrearEvento()
+    public static Participante InscribirParticipante(Evento evento)
+    {
+        Participante par = new Participante();
+        Console.WriteLine("Ingrese el nombre");
+        par.Nombre = Console.ReadLine();
+        Console.WriteLine("Ingrese el apellido");
+        par.Apellido = Console.ReadLine();
+        evento.AgregarParticipante();
+        return par;
+    }
+    public static List<Evento> eventos = new List<Evento>();
+    public static void CrearEvento()
     {
         Console.WriteLine("Ingrese que tipo de evento es");
         Console.WriteLine("1: Taller");
@@ -41,14 +50,17 @@ internal class Program
                 break;
         }
     }
-    public void ListarEventos()
+    public static void ListarEventos()
     {
+        int i = 1;
         foreach (Evento eve in eventos)
         {
+            Console.Write(i);
             eve.ObtenerDescripcion();
+            i++;
         }
     }
-    public void BuscarEvento()
+    public static void BuscarEvento()
     {
         Console.WriteLine("Ingrese el nombre del evento");
         string evento = Console.ReadLine();
@@ -64,15 +76,10 @@ internal class Program
             }
         }
     }
-    public void InscribirParticipante(Participante par)
+
+    public static void Main(string[] args)
     {
-        Console.WriteLine("Ingrese el nombre");
-        par.Nombre = Console.ReadLine();
-        Console.WriteLine("Ingrese el apellido");
-        par.Apellido = Console.ReadLine();
-    }
-    public void Main(string[] args)
-    {
+
         Console.WriteLine("Ingrese que desea hacer");
         Console.WriteLine("1: Crear evento");
         Console.WriteLine("2: Mostrar lista de eventos");
@@ -91,7 +98,10 @@ internal class Program
                 BuscarEvento();
                 break;
             case 4:
-                InscribirParticipante(p);
+                Console.WriteLine("A que evento lo queres inscribir");
+                int i = int.Parse(Console.ReadLine());
+                ListarEventos();
+                InscribirParticipante(eventos[i + 1]);
                 break;
             default: 
                 Console.WriteLine("Ingrese una opcion valida");
