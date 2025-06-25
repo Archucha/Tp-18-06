@@ -10,9 +10,10 @@ namespace Tp_18_06
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public void MostrarNombreCompleto()
+        public string MostrarNombreCompleto()
         { 
-            Console.WriteLine(Nombre + " " + Apellido);
+            string nombre = (Nombre + " " + Apellido);
+            return nombre;
         }
 
     }

@@ -10,7 +10,7 @@ internal class Program
         par.Nombre = Console.ReadLine();
         Console.WriteLine("Ingrese el apellido");
         par.Apellido = Console.ReadLine();
-        evento.AgregarParticipante();
+        evento.AgregarParticipante(par);
         return par;
     }
     public static List<Evento> eventos = new List<Evento>();
@@ -55,6 +55,11 @@ internal class Program
         {
             Console.WriteLine(i);
             eve.ObtenerDescripcion();
+            Console.WriteLine("Participñantes: ");
+            foreach (Participante participante in eve.Participantes)
+            {
+                Console.WriteLine(participante.MostrarNombreCompleto());
+            }
             i++;
         }
     }
@@ -69,10 +74,6 @@ internal class Program
             if (evento == eve.Nombre)
             {
                 eve.ObtenerDescripcion();
-                foreach (Participante participante in eve.Participantes)
-                {
-                    participante.MostrarNombreCompleto();
-                }
                 existe = true;
             }
             if (existe = false)
