@@ -24,7 +24,6 @@ internal class Program
         {
             case 1:
                 Taller taller = new Taller();
-                taller.ObtenerDescripcion();
                 Console.WriteLine("Ingrese el nombre del evento");
                 taller.Nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese la fecha del evento");
@@ -37,7 +36,6 @@ internal class Program
                 break;
             case 2:
                 Conferencia conferencia = new Conferencia();
-                conferencia.ObtenerDescripcion();
                 Console.WriteLine("Ingrese el nombre del evento");
                 conferencia.Nombre = Console.ReadLine();
                 Console.WriteLine("Ingrese la fecha del evento");
@@ -55,15 +53,17 @@ internal class Program
         int i = 1;
         foreach (Evento eve in eventos)
         {
-            Console.Write(i);
+            Console.WriteLine(i);
             eve.ObtenerDescripcion();
             i++;
         }
     }
     public static void BuscarEvento()
     {
+        ListarEventos();
         Console.WriteLine("Ingrese el nombre del evento");
         string evento = Console.ReadLine();
+        bool existe = false;
         foreach(Evento eve in eventos)
         {
             if (evento == eve.Nombre)
@@ -73,20 +73,23 @@ internal class Program
                 {
                     participante.MostrarNombreCompleto();
                 }
+                existe = true;
+            }
+            if (existe = false)
+            {
+                Console.WriteLine("No existe");
             }
         }
     }
-
-    public static void Main(string[] args)
+    public static void Menu()
     {
-
         Console.WriteLine("Ingrese que desea hacer");
         Console.WriteLine("1: Crear evento");
         Console.WriteLine("2: Mostrar lista de eventos");
         Console.WriteLine("3: Buscar eventos");
         Console.WriteLine("4: Inscribir participantes");
         int sel = int.Parse(Console.ReadLine());
-        switch(sel)
+        switch (sel)
         {
             case 1:
                 CrearEvento();
@@ -99,13 +102,24 @@ internal class Program
                 break;
             case 4:
                 Console.WriteLine("A que evento lo queres inscribir");
-                int i = int.Parse(Console.ReadLine());
                 ListarEventos();
-                InscribirParticipante(eventos[i + 1]);
+                int i = int.Parse(Console.ReadLine());
+                InscribirParticipante(eventos[i - 1]);
                 break;
-            default: 
+            default:
                 Console.WriteLine("Ingrese una opcion valida");
                 break;
         }
+    }
+
+    public static void Main(string[] args)
+    {
+        while(true)
+        {
+            Menu();
+            Console.ReadKey();
+            Console.Clear();
+        }
+        
     }
 }
